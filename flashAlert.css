@@ -155,6 +155,35 @@
   font-family: 'Orbitron', sans-serif;
 }
 
+.flash-materialDesign {
+  background: #fff;
+  color: #333;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  border-radius: 8px;
+}
+.flash-materialDesign .flash-ok-button {
+  background: #6200ee;
+  color: #fff;
+}
+.flash-materialDesign .flash-ok-button:hover {
+  background: #3700b3;
+}
+
+.flash-deepin {
+  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.05), 0 2px 6px rgba(0,0,0,0.15);
+  color: #222;
+  border-radius: 10px;
+}
+.flash-deepin .flash-ok-button {
+  background: #2c8cff;
+  color: #fff;
+}
+.flash-deepin .flash-ok-button:hover {
+  background: #1266dd;
+}
+
+
 .flash-loading-icon {
   display: inline-block;
   width: 1em;
