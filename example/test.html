@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <title>flashAlert – Testy z callback</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="flashAlert.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/KamilMalicki/flashAlert.js@main/flashAlert.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -46,8 +46,10 @@
   <h1>⚡️ flashAlert – Test alertLoading z callback</h1>
   <div id="testContainer"></div>
 
-  <script src="flashAlert.js"></script>
-  <script>
+  <script type="module">
+    
+    import flashAlert from 'https://cdn.jsdelivr.net/gh/KamilMalicki/flashAlert.js@main/flashAlert.js';
+
     const styles = [
       'light', 'dark', 'terminal', 'retro',
       'neon', 'plasma', 'geo', 'aqua', 'cyber'
