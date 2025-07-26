@@ -1,4 +1,4 @@
-const flashAlert = (() => {
+export const flashAlert = (() => {
   const styles = {};
 
   const createAlertBox = (message, styleClass, callback, icon, noButton = false) => {
@@ -104,3 +104,5 @@ const flashAlert = (() => {
 
   return styles;
 })();
+
+export default flashAlert;
