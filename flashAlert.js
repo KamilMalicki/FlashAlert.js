@@ -101,6 +101,8 @@ export const flashAlert = (() => {
   defineStyle('geo', 'flash-geo');
   defineStyle('aqua', 'flash-aqua');
   defineStyle('cyber', 'flash-cyber');
+  defineStyle('deepin', 'flash-deepin');
+  defineStyle('materialDesign', 'flash-materialDesign');
 
   return styles;
 })();
