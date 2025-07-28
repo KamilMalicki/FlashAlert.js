@@ -157,19 +157,19 @@
 
 .flash-materialDesign {
   background: #ffffff;
-  color: #1a1a1a;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
+  color: #212121;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
   padding: 1.5rem;
   font-family: 'Roboto', sans-serif;
+  border-left: 4px solid #6200ee; /* akcent */
 }
 .flash-materialDesign .flash-ok-button {
   background: #6200ee;
   color: white;
-  border-radius: 8px;
-  font-weight: 500;
   text-transform: uppercase;
-  transition: background 0.3s ease;
+  font-weight: 500;
+  border-radius: 6px;
 }
 .flash-materialDesign .flash-ok-button:hover {
   background: #3700b3;
@@ -177,11 +177,12 @@
 
 
 .flash-deepin {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
   color: #222;
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #4c8df6;
 }
 .flash-deepin .flash-ok-button {
   background: #4c8df6;
@@ -191,6 +192,7 @@
 .flash-deepin .flash-ok-button:hover {
   background: #2266cc;
 }
+
 
 
 .flash-loading-icon {
