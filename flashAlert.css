@@ -1,3 +1,4 @@
+/* flash-backdrop i flash-alert - Podstawowe style */
 .flash-backdrop {
   position: fixed;
   inset: 0;
@@ -18,7 +19,7 @@
   opacity: 0;
   padding: 1.2rem 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   max-width: 320px;
   width: 90%;
   text-align: left;
@@ -40,6 +41,7 @@
   justify-content: flex-end;
 }
 
+/* flash-ok-button - Styl domyślnego przycisku OK */
 .flash-ok-button {
   padding: 0.5rem 1.2rem;
   border: none;
@@ -60,7 +62,7 @@
   vertical-align: middle;
 }
 
-/* ALERT TYPES */
+/* ALERT TYPES - Style dla poszczególnych typów alertów */
 .flash-success {
   border-left: 4px solid #28a745;
 }
@@ -105,75 +107,449 @@
   border-left: 4px solid transparent;
 }
 
-/* THEMES */
+/* THEMES - Style dla poszczególnych motywów */
 .flash-light {
   background: #ffffff;
   color: #000;
 }
+.flash-light .flash-confirm-button {
+    background: #007bff;
+    color: white;
+}
+.flash-light .flash-confirm-button:hover {
+    background: #0056b3;
+}
+.flash-light .flash-cancel-button {
+    background: #6c757d;
+    color: white;
+}
+.flash-light .flash-cancel-button:hover {
+    background: #5a6268;
+}
+.flash-light .flash-prompt-input {
+    border-color: #ccc;
+    color: #333;
+}
+.flash-light .flash-prompt-input::placeholder {
+    color: #999;
+}
+.flash-light .flash-prompt-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+
 .flash-dark {
   background: #222;
   color: #f0f0f0;
 }
+.flash-dark .flash-confirm-button {
+    background: #007bff;
+    color: white;
+}
+.flash-dark .flash-confirm-button:hover {
+    background: #0056b3;
+}
+.flash-dark .flash-cancel-button {
+    background: #444;
+    color: #f0f0f0;
+}
+.flash-dark .flash-cancel-button:hover {
+    background: #555;
+}
+.flash-dark .flash-prompt-input {
+    background: #333;
+    border-color: #444;
+    color: #f0f0f0;
+}
+.flash-dark .flash-prompt-input::placeholder {
+    color: #aaa;
+}
+.flash-dark .flash-prompt-input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+
 .flash-terminal {
   background: #000;
   color: #33ff33;
   font-family: monospace;
   border: 2px solid #33ff33;
 }
+.flash-terminal .flash-confirm-button {
+    background: #33ff33;
+    color: #000;
+    border: 1px solid #33ff33;
+}
+.flash-terminal .flash-confirm-button:hover {
+    background: #00cc00;
+}
+.flash-terminal .flash-cancel-button {
+    background: #555;
+    color: #33ff33;
+    border: 1px solid #33ff33;
+}
+.flash-terminal .flash-cancel-button:hover {
+    background: #777;
+}
+.flash-terminal .flash-prompt-input {
+    background: #000;
+    border-color: #33ff33;
+    color: #33ff33;
+    font-family: monospace;
+}
+.flash-terminal .flash-prompt-input::placeholder {
+    color: rgba(51, 255, 51, 0.5);
+}
+.flash-terminal .flash-prompt-input:focus {
+    border-color: #00ff00;
+    box-shadow: 0 0 0 3px rgba(51, 255, 51, 0.25);
+}
+
+
 .flash-retro {
   background: #ffcc00;
   color: #000;
   font-family: 'Courier New', Courier, monospace;
   border: 2px dashed #000;
 }
+.flash-retro .flash-confirm-button {
+    background: #000;
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+}
+.flash-retro .flash-confirm-button:hover {
+    background: #333;
+    color: #fff;
+}
+.flash-retro .flash-cancel-button {
+    background: #ffcc00;
+    color: #000;
+    border: 2px dashed #000;
+}
+.flash-retro .flash-cancel-button:hover {
+    background: #e0b000;
+}
+.flash-retro .flash-prompt-input {
+    background: #fff;
+    border-color: #000;
+    color: #000;
+    font-family: 'Courier New', Courier, monospace;
+}
+.flash-retro .flash-prompt-input::placeholder {
+    color: #555;
+}
+.flash-retro .flash-prompt-input:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25);
+}
+
+
 .flash-neon {
   background: #0f0f0f;
   color: #39ff14;
   box-shadow: 0 0 10px #39ff14;
   font-family: 'Orbitron', sans-serif;
 }
+.flash-neon .flash-confirm-button {
+    background: #39ff14;
+    color: #0f0f0f;
+    box-shadow: 0 0 5px #39ff14;
+}
+.flash-neon .flash-confirm-button:hover {
+    background: #00e600;
+    box-shadow: 0 0 8px #00e600;
+}
+.flash-neon .flash-cancel-button {
+    background: #555;
+    color: #39ff14;
+    box-shadow: 0 0 3px #39ff14;
+}
+.flash-neon .flash-cancel-button:hover {
+    background: #777;
+}
+.flash-neon .flash-prompt-input {
+    background: #1a1a1a;
+    border-color: #39ff14;
+    color: #39ff14;
+    box-shadow: 0 0 3px #39ff14;
+}
+.flash-neon .flash-prompt-input::placeholder {
+    color: rgba(57, 255, 20, 0.5);
+}
+.flash-neon .flash-prompt-input:focus {
+    border-color: #00e600;
+    box-shadow: 0 0 0 3px rgba(57, 255, 20, 0.25), 0 0 10px #00e600;
+}
+
+
 .flash-plasma {
   background: linear-gradient(135deg, #4e00ff, #ff00c8);
   color: white;
   font-family: 'Segoe UI', sans-serif;
 }
+.flash-plasma .flash-confirm-button {
+    background: #00eaff; /* Jasny niebieski/cyjan */
+    color: #4e00ff;
+}
+.flash-plasma .flash-confirm-button:hover {
+    background: #00b3cc;
+}
+.flash-plasma .flash-cancel-button {
+    background: #ff00c8; /* Różowy */
+    color: white;
+}
+.flash-plasma .flash-cancel-button:hover {
+    background: #cc00a0;
+}
+.flash-plasma .flash-prompt-input {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+.flash-plasma .flash-prompt-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+.flash-plasma .flash-prompt-input:focus {
+    border-color: #00eaff;
+    box-shadow: 0 0 0 3px rgba(0, 234, 255, 0.25);
+}
+
+
 .flash-geo {
   background: white;
   color: #222;
   border: 3px solid #222;
   font-family: 'Segoe UI', sans-serif;
 }
+.flash-geo .flash-confirm-button {
+    background: #222;
+    color: white;
+    border: 1px solid #222;
+}
+.flash-geo .flash-confirm-button:hover {
+    background: #555;
+}
+.flash-geo .flash-cancel-button {
+    background: white;
+    color: #222;
+    border: 1px solid #222;
+}
+.flash-geo .flash-cancel-button:hover {
+    background: #eee;
+}
+.flash-geo .flash-prompt-input {
+    background: white;
+    border-color: #222;
+    color: #222;
+}
+.flash-geo .flash-prompt-input::placeholder {
+    color: #555;
+}
+.flash-geo .flash-prompt-input:focus {
+    border-color: #222;
+    box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.25);
+}
+
+
 .flash-aqua {
   background: #e0f7fa;
   color: #006064;
   border-left: 4px solid #00acc1;
 }
+.flash-aqua .flash-confirm-button {
+    background: #00acc1;
+    color: white;
+}
+.flash-aqua .flash-confirm-button:hover {
+    background: #008fa1;
+}
+.flash-aqua .flash-cancel-button {
+    background: #80deea;
+    color: #006064;
+}
+.flash-aqua .flash-cancel-button:hover {
+    background: #4dd0e1;
+}
+.flash-aqua .flash-prompt-input {
+    background: #fff;
+    border-color: #00acc1;
+    color: #006064;
+}
+.flash-aqua .flash-prompt-input::placeholder {
+    color: #00838f;
+}
+.flash-aqua .flash-prompt-input:focus {
+    border-color: #00acc1;
+    box-shadow: 0 0 0 3px rgba(0, 172, 193, 0.25);
+}
+
+
 .flash-cyber {
   background: #0f0f0f;
   color: #00eaff;
   border-left: 4px solid #ff00f7;
   font-family: 'Orbitron', sans-serif;
 }
+.flash-cyber .flash-confirm-button {
+    background: #00eaff;
+    color: #0f0f0f;
+    box-shadow: 0 0 5px #00eaff;
+}
+.flash-cyber .flash-confirm-button:hover {
+    background: #00b3cc;
+    box-shadow: 0 0 8px #00b3cc;
+}
+.flash-cyber .flash-cancel-button {
+    background: #ff00f7;
+    color: #0f0f0f;
+    box-shadow: 0 0 5px #ff00f7;
+}
+.flash-cyber .flash-cancel-button:hover {
+    background: #cc00c4;
+    box-shadow: 0 0 8px #cc00c4;
+}
+.flash-cyber .flash-prompt-input {
+    background: #1a1a1a;
+    border-color: #00eaff;
+    color: #00eaff;
+    box-shadow: 0 0 3px #00eaff;
+}
+.flash-cyber .flash-prompt-input::placeholder {
+    color: rgba(0, 234, 255, 0.5);
+}
+.flash-cyber .flash-prompt-input:focus {
+    border-color: #00b3cc;
+    box-shadow: 0 0 0 3px rgba(0, 234, 255, 0.25), 0 0 10px #00b3cc;
+}
 
+
+/* DEEPIN THEME - Zaktualizowane style dla Deepin */
+.flash-deepin {
+  background: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  color: #e0e0e0;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  border-left: 4px solid #4c8df6;
+}
+.flash-deepin .flash-ok-button {
+  background: #4c8df6;
+  color: white;
+  font-weight: normal;
+}
+.flash-deepin .flash-ok-button:hover {
+  background: #3a75e2;
+}
+.flash-deepin .flash-confirm-button {
+    background: #4c8df6; /* Główny kolor Deepin */
+    color: white;
+    font-weight: normal;
+}
+.flash-deepin .flash-confirm-button:hover {
+    background: #3a75e2;
+}
+.flash-deepin .flash-cancel-button {
+    background: #606060; /* Ciemniejszy szary dla anuluj */
+    color: #e0e0e0;
+    font-weight: normal;
+}
+.flash-deepin .flash-cancel-button:hover {
+    background: #4a4a4a;
+}
+.flash-deepin .flash-prompt-input {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+.flash-deepin .flash-prompt-input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+.flash-deepin .flash-prompt-input:focus {
+    border-color: #4c8df6;
+    box-shadow: 0 0 0 3px rgba(76, 141, 246, 0.25);
+}
+
+
+/* MATERIAL DESIGN THEME - Zaktualizowane style dla Material Design */
 .flash-materialDesign {
   background: #ffffff;
   color: #212121;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+              0 8px 16px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
-  padding: 1.5rem;
   font-family: 'Roboto', sans-serif;
-  border-left: 4px solid #6200ee; /* akcent */
+}
+.flash-materialDesign .flash-message {
+  padding: 1rem 1.5rem 0.5rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+.flash-materialDesign .flash-buttons {
+  padding: 0.5rem 1rem 0.5rem 1.5rem;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.flash-materialDesign .flash-ok-button {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  background: #6200ee;
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+.flash-materialDesign .flash-ok-button:hover {
+  background: #3700b3;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+}
+/* Style typów alertów dla Material Design */
+.flash-materialDesign.flash-success { border-left: 4px solid #00c853; }
+.flash-materialDesign.flash-error { border-left: 4px solid #d50000; }
+.flash-materialDesign.flash-warning { border-left: 4px solid #ffab00; }
+.flash-materialDesign.flash-info { border-left: 4px solid #2962ff; }
+.flash-materialDesign .flash-button { /* Nadpisanie ogólnego flash-button dla spójności MD */
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: background 0.2s ease-out, box-shadow 0.2s ease-out;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+.flash-materialDesign .flash-confirm-button {
+    background: #6200ee;
+    color: white;
+}
+.flash-materialDesign .flash-confirm-button:hover {
+    background: #3700b3;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+}
+.flash-materialDesign .flash-cancel-button {
+    background: none;
+    color: #6200ee;
+    box-shadow: none;
+}
+.flash-materialDesign .flash-cancel-button:hover {
+    background: rgba(98, 0, 238, 0.08);
+    box-shadow: none;
+}
+.flash-materialDesign .flash-prompt-input {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+.flash-materialDesign .flash-prompt-input:focus {
+    border-color: #6200ee;
+    box-shadow: 0 0 0 3px rgba(98, 0, 238, 0.25);
 }
 
-.flash-deepin {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  color: #222;
-  border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid #4c8df6;
-}
 
+/* LOADING ICON - Animacja ikonki ładowania */
 .flash-loading-icon {
   display: inline-block;
   width: 1em;
@@ -189,4 +565,120 @@
 @keyframes flash-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* CONFIRM & PROMPT BUTTONS - Ogólne style dla przycisków Tak/Nie */
+.flash-button {
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+    margin-left: 8px; /* Odstęp między przyciskami w rzędzie */
+}
+
+.flash-confirm-button {
+    background: #007bff; /* Domyślny kolor dla akcji pozytywnej */
+    color: white;
+}
+.flash-confirm-button:hover {
+    background: #0056b3;
+}
+
+.flash-cancel-button {
+    background: #6c757d; /* Domyślny kolor dla akcji negatywnej/anulowania */
+    color: white;
+}
+.flash-cancel-button:hover {
+    background: #5a6268;
+}
+
+/* PROMPT INPUT - Ogólne style dla pola wprowadzania w prompt */
+.flash-prompt-input {
+    width: calc(100% - 24px); /* Szerokość z uwzględnieniem paddingu alertu */
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ważne, aby padding nie powiększał elementu */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.flash-prompt-input:focus {
+    outline: none;
+    border-color: #007bff; /* Podkreślenie kolorem akcentu po focusie */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* CONFIRM & PROMPT BOXES - Style dla okien confirm/prompt */
+.flash-confirm {
+    border-left: 4px solid #007bff; /* Domyślny akcent dla okna confirm */
+}
+.flash-prompt {
+    border-left: 4px solid #f0ad4e; /* Domyślny akcent dla okna prompt */
+}
+
+
+/* --- Toast Notifications --- */
+#flash-toast-container {
+    position: fixed;
+    bottom: 20px; /* Pozycjonowanie na dole */
+    left: 50%;
+    transform: translateX(-50%); /* Wyśrodkowanie */
+    z-index: 10000; /* Upewnij się, że jest nad wszystkim */
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Odstęp między kolejnymi toastami */
+    align-items: center; /* Wyśrodkuj toasty w kontenerze */
+    pointer-events: none; /* Pozwala na klikanie przez kontener, jeśli nie ma toastów */
+}
+
+.flash-toast {
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 0.95em;
+    color: #fff;
+    opacity: 0; /* Początkowo ukryty */
+    transform: translateY(20px); /* Przesunięty na początek animacji */
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Animacja pojawienia */
+    min-width: 250px;
+    max-width: 350px;
+    text-align: center;
+    pointer-events: auto; /* Toast sam przyjmuje zdarzenia myszy */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flash-toast.show {
+    opacity: 1;
+    transform: translateY(0); 
+}
+
+.flash-light.flash-toast { background-color: rgba(60, 60, 60, 0.9); color: #fff; }
+.flash-dark.flash-toast { background-color: rgba(240, 240, 240, 0.9); color: #333; }
+.flash-terminal.flash-toast { background-color: rgba(0, 0, 0, 0.9); color: #0f0; border: 1px solid #0f0; font-family: 'monospace'; }
+.flash-retro.flash-toast { background-color: rgba(100, 100, 100, 0.9); color: #ff0; text-shadow: 0 0 5px #ff0; border: 1px solid #ff0; }
+.flash-neon.flash-toast { background-color: rgba(0, 128, 128, 0.9); color: #00ffff; text-shadow: 0 0 8px #00ffff; border: 1px solid #00ffff; }
+.flash-plasma.flash-toast { background-color: rgba(128, 0, 128, 0.9); color: #ff00ff; text-shadow: 0 0 8px #ff00ff; border: 1px solid #ff00ff; }
+.flash-geo.flash-toast { background-color: rgba(50, 50, 50, 0.9); color: #aaffee; border: 1px solid #aaffee; }
+.flash-aqua.flash-toast { background-color: rgba(0, 150, 255, 0.9); color: #e0f0ff; border: 1px solid #e0f0ff; }
+.flash-cyber.flash-toast { background-color: rgba(30, 30, 30, 0.9); color: #00ffc8; text-shadow: 0 0 5px #00ffc8; border: 1px solid #00ffc8; }
+.flash-deepin.flash-toast { background-color: rgba(46, 125, 255, 0.95); color: #fff; } /* Deepin blue */
+.flash-materialDesign.flash-toast { background-color: rgba(33, 33, 33, 0.95); color: #fff; } /* MD dark grey */
+
+
+/* Kolory dla toastów sukcesu, błędu, ostrzeżenia, info - nadpisują tło domyślne toasta */
+.flash-toast-success { background-color: #28a745 !important; } /* Zielony */
+.flash-toast-error { background-color: #dc3545 !important; }    /* Czerwony */
+.flash-toast-warning { background-color: #ffc107 !important; color: #333 !important; } /* Żółty, z ciemnym tekstem */
+.flash-toast-info { background-color: #17a2b8 !important; }     /* Niebieski/cyjan */
+
+.flash-toast-icon {
+    margin-right: 8px;
+    font-size: 1.2em;
+    line-height: 1; /* Upewnij się, że ikona jest dobrze wyrównana pionowo */
 }
