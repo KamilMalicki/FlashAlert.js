@@ -1,6 +1,7 @@
 export const flashAlert = (() => {
   const styles = {};
 
+  // --- FUNKCJA createAlertBox ---
   const createAlertBox = (message, styleClass, callback, icon, noButton = false) => {
     const backdrop = document.createElement('div');
     backdrop.className = 'flash-backdrop';
@@ -49,19 +50,194 @@ export const flashAlert = (() => {
     }, 10);
 
     if (noButton) {
-  setTimeout(() => {
-    alert.classList.remove('show');
-    backdrop.classList.remove('show');
-    setTimeout(() => {
-      if (document.body.contains(alert)) document.body.removeChild(alert);
-      if (document.body.contains(backdrop)) document.body.removeChild(backdrop);
-      if (typeof callback === 'function') callback();
-    }, 300);
-  }, 3000);
-}
-
+      setTimeout(() => {
+        alert.classList.remove('show');
+        backdrop.classList.remove('show');
+        setTimeout(() => {
+          if (document.body.contains(alert)) document.body.removeChild(alert);
+          if (document.body.contains(backdrop)) document.body.removeChild(backdrop);
+          if (typeof callback === 'function') callback();
+        }, 300);
+      }, 3000); 
+    }
   };
+  // --- KONIEC createAlertBox ---
 
+  // --- FUNKCJA createConfirmBox (TERAZ Z PROMISE) ---
+  const createConfirmBox = (message, styleClass, resolve, reject, confirmText = 'Tak', cancelText = 'Nie') => { 
+    const backdrop = document.createElement('div');
+    backdrop.className = 'flash-backdrop';
+
+    const confirmBox = document.createElement('div');
+    confirmBox.className = `flash-alert flash-confirm ${styleClass}`;
+
+    const msgBox = document.createElement('div');
+    msgBox.className = 'flash-message';
+    msgBox.innerHTML = message;
+
+    confirmBox.appendChild(msgBox);
+
+    const buttonRow = document.createElement('div');
+    buttonRow.className = 'flash-buttons';
+
+    const cancelButton = document.createElement('button');
+    cancelButton.className = 'flash-button flash-cancel-button';
+    cancelButton.innerText = cancelText;
+    cancelButton.onclick = () => {
+      confirmBox.classList.remove('show');
+      backdrop.classList.remove('show');
+      setTimeout(() => {
+        document.body.removeChild(confirmBox);
+        document.body.removeChild(backdrop);
+        resolve(false);
+      }, 300);
+    };
+    buttonRow.appendChild(cancelButton);
+
+    const confirmButton = document.createElement('button');
+    confirmButton.className = 'flash-button flash-confirm-button';
+    confirmButton.innerText = confirmText;
+    confirmButton.onclick = () => {
+      confirmBox.classList.remove('show');
+      backdrop.classList.remove('show');
+      setTimeout(() => {
+        document.body.removeChild(confirmBox);
+        document.body.removeChild(backdrop);
+        resolve(true); 
+      }, 300);
+    };
+    buttonRow.appendChild(confirmButton);
+
+    confirmBox.appendChild(buttonRow);
+
+    document.body.appendChild(backdrop);
+    document.body.appendChild(confirmBox);
+
+    setTimeout(() => {
+      confirmBox.classList.add('show');
+      backdrop.classList.add('show');
+    }, 10);
+  };
+  // --- KONIEC createConfirmBox ---
+
+  // --- FUNKCJA createPromptBox (TERAZ Z PROMISE I OBIKTEM OPCJI) ---
+  const createPromptBox = (message, styleClass, resolve, reject, options = {}) => {
+    const defaultOptions = {
+      placeholder: '',
+      defaultValue: '',
+      confirmText: 'OK',
+      cancelText: 'Anuluj'
+    };
+    const finalOptions = { ...defaultOptions, ...options }; 
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'flash-backdrop';
+
+    const promptBox = document.createElement('div');
+    promptBox.className = `flash-alert flash-prompt ${styleClass}`;
+
+    const msgBox = document.createElement('div');
+    msgBox.className = 'flash-message';
+    msgBox.innerHTML = message;
+
+    const inputField = document.createElement('input');
+    inputField.type = 'text';
+    inputField.className = 'flash-prompt-input';
+    inputField.placeholder = finalOptions.placeholder;
+    inputField.value = finalOptions.defaultValue;
+    inputField.focus();
+
+    promptBox.appendChild(msgBox);
+    promptBox.appendChild(inputField);
+
+    const buttonRow = document.createElement('div');
+    buttonRow.className = 'flash-buttons';
+
+    const cancelButton = document.createElement('button');
+    cancelButton.className = 'flash-button flash-cancel-button';
+    cancelButton.innerText = finalOptions.cancelText;
+    cancelButton.onclick = () => {
+      promptBox.classList.remove('show');
+      backdrop.classList.remove('show');
+      setTimeout(() => {
+        document.body.removeChild(promptBox);
+        document.body.removeChild(backdrop);
+        reject(null);
+      }, 300);
+    };
+    buttonRow.appendChild(cancelButton);
+
+    const confirmButton = document.createElement('button');
+    confirmButton.className = 'flash-button flash-confirm-button';
+    confirmButton.innerText = finalOptions.confirmText;
+    confirmButton.onclick = () => {
+      const inputValue = inputField.value;
+      promptBox.classList.remove('show');
+      backdrop.classList.remove('show');
+      setTimeout(() => {
+        document.body.removeChild(promptBox);
+        document.body.removeChild(backdrop);
+        resolve(inputValue); 
+      }, 300);
+    };
+    buttonRow.appendChild(confirmButton);
+
+    promptBox.appendChild(buttonRow);
+
+    document.body.appendChild(backdrop);
+    document.body.appendChild(promptBox);
+
+    setTimeout(() => {
+      promptBox.classList.add('show');
+      backdrop.classList.add('show');
+    }, 10);
+
+    inputField.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        confirmButton.click();
+      }
+    });
+  };
+  // --- KONIEC createPromptBox ---
+
+  // --- FUNKCJA createToastBox ---
+  const createToastBox = (message, styleClass, typeIcon = '', duration = 3000) => {
+    const toastContainer = document.getElementById('flash-toast-container') || (() => {
+        const div = document.createElement('div');
+        div.id = 'flash-toast-container';
+        document.body.appendChild(div);
+        return div;
+    })();
+
+    const toast = document.createElement('div');
+    toast.className = `flash-toast ${styleClass}`;
+    
+    if (typeIcon) {
+        toast.innerHTML = `<span class="flash-toast-icon">${typeIcon}</span> ${message}`;
+    } else {
+        toast.innerHTML = message;
+    }
+
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('show');
+    }, 10);
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        toast.addEventListener('transitionend', () => {
+            if (!toast.classList.contains('show')) {
+                if (toastContainer.contains(toast)) {
+                    toastContainer.removeChild(toast);
+                    if (toastContainer.children.length === 0) {
+                        document.body.removeChild(toastContainer);
+                    }
+                }
+            }
+        }, { once: true });
+    }, duration);
+};
 
   const defineStyle = (name, cssClass) => {
     styles[name] = {
@@ -72,12 +248,31 @@ export const flashAlert = (() => {
       alertWarning: (msg, cb) => createAlertBox(msg, `${cssClass} flash-warning`, cb, '⚠️'),
       alertInfo: (msg, cb) => createAlertBox(msg, `${cssClass} flash-info`, cb, 'ℹ️'),
       alertLoading: (msg, callback) => createAlertBox(
-  `<div class="flash-loading-icon"></div> ${msg}`,
-  `${cssClass} flash-loading`,
-  callback,
-  null,
-  true
-),
+        `<div class="flash-loading-icon"></div> ${msg}`,
+        `${cssClass} flash-loading`,
+        callback,
+        null,
+        true 
+      ),
+
+      toast: (msg, duration) => createToastBox(msg, cssClass, '', duration),
+      toastSuccess: (msg, duration) => createToastBox(msg, `${cssClass} flash-toast-success`, '✔️', duration),
+      toastError: (msg, duration) => createToastBox(msg, `${cssClass} flash-toast-error`, '❌', duration),
+      toastWarning: (msg, duration) => createToastBox(msg, `${cssClass} flash-toast-warning`, '⚠️', duration),
+      toastInfo: (msg, duration) => createToastBox(msg, `${cssClass} flash-toast-info`, 'ℹ️', duration),
+      
+
+      prompt: (msg, options = {}) => {
+        return new Promise((resolve, reject) => {
+          createPromptBox(msg, cssClass, resolve, reject, options);
+        });
+      },
+
+      confirm: (msg, confirmText = 'Tak', cancelText = 'Nie') => { 
+        return new Promise((resolve, reject) => {
+          createConfirmBox(msg, cssClass, resolve, reject, confirmText, cancelText);
+        });
+      },
 
       alertCustom: (msg, icon, color, cb) => {
         const customClass = `${cssClass} flash-custom`;
@@ -85,14 +280,14 @@ export const flashAlert = (() => {
           `<span style="color:${color}; font-size:1.2em; margin-right:6px;">${icon}</span>${msg}`,
           customClass,
           cb,
-          null,
+          null, 
           false
         );
       }
     };
   };
 
-  // Register styles
+  // Rejestracja wszystkich dostępnych stylów
   defineStyle('light', 'flash-light');
   defineStyle('dark', 'flash-dark');
   defineStyle('terminal', 'flash-terminal');
