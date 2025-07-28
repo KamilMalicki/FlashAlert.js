@@ -164,17 +164,6 @@
   font-family: 'Roboto', sans-serif;
   border-left: 4px solid #6200ee; /* akcent */
 }
-.flash-materialDesign .flash-ok-button {
-  background: #6200ee;
-  color: white;
-  text-transform: uppercase;
-  font-weight: 500;
-  border-radius: 6px;
-}
-.flash-materialDesign .flash-ok-button:hover {
-  background: #3700b3;
-}
-
 
 .flash-deepin {
   background: rgba(255, 255, 255, 0.6);
@@ -184,16 +173,6 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   border-left: 4px solid #4c8df6;
 }
-.flash-deepin .flash-ok-button {
-  background: #4c8df6;
-  color: #fff;
-  border-radius: 10px;
-}
-.flash-deepin .flash-ok-button:hover {
-  background: #2266cc;
-}
-
-
 
 .flash-loading-icon {
   display: inline-block;
