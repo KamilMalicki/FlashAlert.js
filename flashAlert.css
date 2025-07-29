@@ -1,4 +1,3 @@
-/* flash-backdrop i flash-alert - Podstawowe style */
 .flash-backdrop {
   position: fixed;
   inset: 0;
@@ -41,7 +40,6 @@
   justify-content: flex-end;
 }
 
-/* flash-ok-button - Styl domyślnego przycisku OK */
 .flash-ok-button {
   padding: 0.5rem 1.2rem;
   border: none;
@@ -62,7 +60,7 @@
   vertical-align: middle;
 }
 
-/* ALERT TYPES - Style dla poszczególnych typów alertów */
+
 .flash-success {
   border-left: 4px solid #28a745;
 }
@@ -107,7 +105,6 @@
   border-left: 4px solid transparent;
 }
 
-/* THEMES - Style dla poszczególnych motywów */
 .flash-light {
   background: #ffffff;
   color: #000;
@@ -137,7 +134,6 @@
     border-color: #007bff;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
-
 
 .flash-dark {
   background: #222;
@@ -169,7 +165,6 @@
     border-color: #007bff;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
-
 
 .flash-terminal {
   background: #000;
@@ -206,7 +201,6 @@
     border-color: #00ff00;
     box-shadow: 0 0 0 3px rgba(51, 255, 51, 0.25);
 }
-
 
 .flash-retro {
   background: #ffcc00;
@@ -245,7 +239,6 @@
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25);
 }
 
-
 .flash-neon {
   background: #0f0f0f;
   color: #39ff14;
@@ -283,21 +276,20 @@
     box-shadow: 0 0 0 3px rgba(57, 255, 20, 0.25), 0 0 10px #00e600;
 }
 
-
 .flash-plasma {
   background: linear-gradient(135deg, #4e00ff, #ff00c8);
   color: white;
   font-family: 'Segoe UI', sans-serif;
 }
 .flash-plasma .flash-confirm-button {
-    background: #00eaff; /* Jasny niebieski/cyjan */
+    background: #00eaff; 
     color: #4e00ff;
 }
 .flash-plasma .flash-confirm-button:hover {
     background: #00b3cc;
 }
 .flash-plasma .flash-cancel-button {
-    background: #ff00c8; /* Różowy */
+    background: #ff00c8; 
     color: white;
 }
 .flash-plasma .flash-cancel-button:hover {
@@ -315,7 +307,6 @@
     border-color: #00eaff;
     box-shadow: 0 0 0 3px rgba(0, 234, 255, 0.25);
 }
-
 
 .flash-geo {
   background: white;
@@ -352,7 +343,6 @@
     box-shadow: 0 0 0 3px rgba(34, 34, 34, 0.25);
 }
 
-
 .flash-aqua {
   background: #e0f7fa;
   color: #006064;
@@ -384,7 +374,6 @@
     border-color: #00acc1;
     box-shadow: 0 0 0 3px rgba(0, 172, 193, 0.25);
 }
-
 
 .flash-cyber {
   background: #0f0f0f;
@@ -424,8 +413,6 @@
     box-shadow: 0 0 0 3px rgba(0, 234, 255, 0.25), 0 0 10px #00b3cc;
 }
 
-
-/* DEEPIN THEME - Zaktualizowane style dla Deepin */
 .flash-deepin {
   background: rgba(30, 30, 30, 0.8);
   backdrop-filter: blur(10px);
@@ -443,7 +430,7 @@
   background: #3a75e2;
 }
 .flash-deepin .flash-confirm-button {
-    background: #4c8df6; /* Główny kolor Deepin */
+    background: #4c8df6; 
     color: white;
     font-weight: normal;
 }
@@ -451,7 +438,7 @@
     background: #3a75e2;
 }
 .flash-deepin .flash-cancel-button {
-    background: #606060; /* Ciemniejszy szary dla anuluj */
+    background: #606060; 
     color: #e0e0e0;
     font-weight: normal;
 }
@@ -471,8 +458,6 @@
     box-shadow: 0 0 0 3px rgba(76, 141, 246, 0.25);
 }
 
-
-/* MATERIAL DESIGN THEME - Zaktualizowane style dla Material Design */
 .flash-materialDesign {
   background: #ffffff;
   color: #212121;
@@ -508,12 +493,12 @@
   background: #3700b3;
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
 }
-/* Style typów alertów dla Material Design */
+
 .flash-materialDesign.flash-success { border-left: 4px solid #00c853; }
 .flash-materialDesign.flash-error { border-left: 4px solid #d50000; }
 .flash-materialDesign.flash-warning { border-left: 4px solid #ffab00; }
 .flash-materialDesign.flash-info { border-left: 4px solid #2962ff; }
-.flash-materialDesign .flash-button { /* Nadpisanie ogólnego flash-button dla spójności MD */
+.flash-materialDesign .flash-button { 
     padding: 0.6rem 1.5rem;
     border: none;
     border-radius: 4px;
@@ -548,8 +533,6 @@
     box-shadow: 0 0 0 3px rgba(98, 0, 238, 0.25);
 }
 
-
-/* LOADING ICON - Animacja ikonki ładowania */
 .flash-loading-icon {
   display: inline-block;
   width: 1em;
@@ -567,7 +550,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* CONFIRM & PROMPT BUTTONS - Ogólne style dla przycisków Tak/Nie */
+
 .flash-button {
     padding: 0.5rem 1.2rem;
     border: none;
@@ -575,11 +558,11 @@
     cursor: pointer;
     font-weight: bold;
     transition: background 0.2s;
-    margin-left: 8px; /* Odstęp między przyciskami w rzędzie */
+    margin-left: 8px; 
 }
 
 .flash-confirm-button {
-    background: #007bff; /* Domyślny kolor dla akcji pozytywnej */
+    background: #007bff; 
     color: white;
 }
 .flash-confirm-button:hover {
@@ -587,52 +570,48 @@
 }
 
 .flash-cancel-button {
-    background: #6c757d; /* Domyślny kolor dla akcji negatywnej/anulowania */
+    background: #6c757d; 
     color: white;
 }
 .flash-cancel-button:hover {
     background: #5a6268;
 }
 
-/* PROMPT INPUT - Ogólne style dla pola wprowadzania w prompt */
 .flash-prompt-input {
-    width: calc(100% - 24px); /* Szerokość z uwzględnieniem paddingu alertu */
+    width: calc(100% - 24px); 
     padding: 0.8rem 1rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1rem;
-    box-sizing: border-box; /* Ważne, aby padding nie powiększał elementu */
+    box-sizing: border-box; 
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .flash-prompt-input:focus {
     outline: none;
-    border-color: #007bff; /* Podkreślenie kolorem akcentu po focusie */
+    border-color: #007bff; 
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-/* CONFIRM & PROMPT BOXES - Style dla okien confirm/prompt */
 .flash-confirm {
-    border-left: 4px solid #007bff; /* Domyślny akcent dla okna confirm */
+    border-left: 4px solid #007bff; 
 }
 .flash-prompt {
-    border-left: 4px solid #f0ad4e; /* Domyślny akcent dla okna prompt */
+    border-left: 4px solid #f0ad4e; 
 }
 
-
-/* --- Toast Notifications --- */
 #flash-toast-container {
     position: fixed;
-    bottom: 20px; /* Pozycjonowanie na dole */
+    bottom: 20px; 
     left: 50%;
-    transform: translateX(-50%); /* Wyśrodkowanie */
-    z-index: 10000; /* Upewnij się, że jest nad wszystkim */
+    transform: translateX(-50%); 
+    z-index: 10000; 
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Odstęp między kolejnymi toastami */
-    align-items: center; /* Wyśrodkuj toasty w kontenerze */
-    pointer-events: none; /* Pozwala na klikanie przez kontener, jeśli nie ma toastów */
+    gap: 10px; 
+    align-items: center; 
+    pointer-events: none; 
 }
 
 .flash-toast {
@@ -641,13 +620,13 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     font-size: 0.95em;
     color: #fff;
-    opacity: 0; /* Początkowo ukryty */
-    transform: translateY(20px); /* Przesunięty na początek animacji */
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out; /* Animacja pojawienia */
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; 
     min-width: 250px;
     max-width: 350px;
     text-align: center;
-    pointer-events: auto; /* Toast sam przyjmuje zdarzenia myszy */
+    pointer-events: auto; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -667,18 +646,199 @@
 .flash-geo.flash-toast { background-color: rgba(50, 50, 50, 0.9); color: #aaffee; border: 1px solid #aaffee; }
 .flash-aqua.flash-toast { background-color: rgba(0, 150, 255, 0.9); color: #e0f0ff; border: 1px solid #e0f0ff; }
 .flash-cyber.flash-toast { background-color: rgba(30, 30, 30, 0.9); color: #00ffc8; text-shadow: 0 0 5px #00ffc8; border: 1px solid #00ffc8; }
-.flash-deepin.flash-toast { background-color: rgba(46, 125, 255, 0.95); color: #fff; } /* Deepin blue */
-.flash-materialDesign.flash-toast { background-color: rgba(33, 33, 33, 0.95); color: #fff; } /* MD dark grey */
-
-
-/* Kolory dla toastów sukcesu, błędu, ostrzeżenia, info - nadpisują tło domyślne toasta */
-.flash-toast-success { background-color: #28a745 !important; } /* Zielony */
-.flash-toast-error { background-color: #dc3545 !important; }    /* Czerwony */
-.flash-toast-warning { background-color: #ffc107 !important; color: #333 !important; } /* Żółty, z ciemnym tekstem */
-.flash-toast-info { background-color: #17a2b8 !important; }     /* Niebieski/cyjan */
+.flash-deepin.flash-toast { background-color: rgba(46, 125, 255, 0.95); color: #fff; } 
+.flash-materialDesign.flash-toast { background-color: rgba(33, 33, 33, 0.95); color: #fff; } 
+.flash-toast-success { background-color: #28a745 !important; } 
+.flash-toast-error { background-color: #dc3545 !important; }    
+.flash-toast-warning { background-color: #ffc107 !important; color: #333 !important; } 
+.flash-toast-info { background-color: #17a2b8 !important; }     
 
 .flash-toast-icon {
     margin-right: 8px;
     font-size: 1.2em;
-    line-height: 1; /* Upewnij się, że ikona jest dobrze wyrównana pionowo */
+    line-height: 1; 
+}
+
+.flash-global-loading-spinner {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    z-index: 9999; 
+    background-color: rgba(0, 0, 0, 0.75); 
+    padding: 30px 50px; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600; 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out; 
+}
+
+.flash-global-loading-spinner.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.flash-spinner {
+    border: 6px solid rgba(255, 255, 255, 0.3); 
+    border-top: 6px solid #4c8df6; 
+    border-radius: 50%; 
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite; 
+    margin-bottom: 20px; 
+}
+
+.flash-loading-text {
+    margin: 0;
+    text-align: center;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.flash-toast-container {
+    position: fixed; 
+    z-index: 9000; 
+    display: flex;
+    flex-direction: column; 
+    padding: 20px; 
+    pointer-events: none; 
+    overflow: hidden; 
+    max-height: 100vh;
+    box-sizing: border-box; 
+}
+
+.flash-toast-container.top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end; 
+}
+
+.flash-toast-container.top-left {
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+}
+
+.flash-toast-container.bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+}
+
+.flash-toast-container.bottom-left {
+    bottom: 0;
+    left: 0;
+    align-items: flex-start;
+}
+
+.flash-toast {
+    pointer-events: all;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    display: flex;
+    align-items: center;
+    word-break: break-word;
+    max-width: 350px; 
+    box-sizing: border-box;
+}
+
+.flash-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flash-toast-icon {
+    font-size: 1.3em;
+    margin-right: 12px;
+}
+
+.flash-toast-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+.flash-toast-success .flash-toast-icon { color: #28a745; }
+.flash-toast-error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+.flash-toast-error .flash-toast-icon { color: #dc3545; }
+.flash-toast-warning { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+.flash-toast-warning .flash-toast-icon { color: #ffc107; }
+.flash-toast-info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+.flash-toast-info .flash-toast-icon { color: #17a2b8; }
+
+.flash-toast-container {
+    position: fixed; 
+    z-index: 9000; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px; 
+    pointer-events: none; 
+    overflow: hidden;
+    max-height: 100vh;
+    box-sizing: border-box;
+}
+
+.flash-toast-container.top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end; 
+}
+
+.flash-toast-container.top-left {
+    top: 0;
+    left: 0;
+    align-items: flex-start; 
+}
+
+.flash-toast-container.bottom-right {
+    bottom: 0;
+    right: 0;
+    align-items: flex-end;
+}
+
+.flash-toast-container.bottom-left {
+    bottom: 0;
+    left: 0;
+    align-items: flex-start;
+}
+
+.flash-toast {
+    pointer-events: all; 
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    display: flex;
+    align-items: flex-start;
+    word-break: break-word; 
+    max-width: 350px; 
+    box-sizing: border-box;
+    background-color: #333; 
+    color: white; 
+}
+
+.flash-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.flash-toast-icon {
+    font-size: 1.3em;
+    margin-right: 12px;
+    color: #4c8df6; 
 }
