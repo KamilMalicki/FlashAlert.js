@@ -1,3 +1,15 @@
+/*!
+ * FlashAlert.js v1.0
+ * Copyright (c) 2025 Kamil Malicki
+ * All Rights Reserved
+ *
+ * License: Proprietary EULA
+ * - Use allowed only under the End User License Agreement
+ * - No modification, redistribution, or rebranding is permitted
+ *
+ * Full license: https://github.com/KamilMalicki/FlashAlert.js/blob/main/LICENSE.txt
+ */
+
 export const flashAlert = (() => {
     const styles = {};
 
@@ -246,7 +258,7 @@ export const flashAlert = (() => {
         if (!spinnerDiv) {
             spinnerDiv = document.createElement('div');
             spinnerDiv.id = 'flash-global-loading-spinner';
-            spinnerDiv.className = 'flash-global-loading-spinner'; 
+            spinnerDiv.className = 'flash-global-loading-spinner';
             spinnerDiv.innerHTML = `
                 <div class="flash-spinner"></div>
                 <p class="flash-loading-text">Ładowanie...</p>
@@ -278,6 +290,132 @@ export const flashAlert = (() => {
         }
     };
     // --- KONIEC GLOBALNEGO WSKAŹNIKA ŁADOWANIA ---
+
+    // --- FUNKCJA createInputListBox ---
+    const createInputListBox = (message, suggestions, styleClass, options) => {
+        return new Promise((resolve) => {
+            const defaultOptions = {
+                placeholder: '',
+                defaultValue: '',
+                confirmText: 'OK',
+                cancelText: 'Anuluj',
+                filterable: true,
+            };
+            const finalOptions = { ...defaultOptions, ...options };
+
+            const backdrop = document.createElement('div');
+            backdrop.className = 'flash-backdrop';
+            document.body.appendChild(backdrop);
+
+            const alert = document.createElement('div');
+            alert.className = `flash-alert ${styleClass}`;
+
+            if (message) {
+                const msgElem = document.createElement('div');
+                msgElem.className = 'flash-message';
+                msgElem.innerHTML = message;
+                alert.appendChild(msgElem);
+            }
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.className = 'flash-prompt-input';
+            input.placeholder = finalOptions.placeholder;
+            input.value = finalOptions.defaultValue;
+            alert.appendChild(input);
+
+            const suggestionContainer = document.createElement('div');
+            suggestionContainer.className = 'flash-suggestion-list-container';
+            const suggestionList = document.createElement('ul');
+            suggestionList.className = 'flash-suggestion-list';
+            suggestionContainer.appendChild(suggestionList);
+            alert.appendChild(suggestionContainer);
+
+            const renderSuggestions = (filterText = '') => {
+                suggestionList.innerHTML = '';
+                const lowerFilterText = filterText.toLowerCase();
+                let hasVisibleSuggestions = false;
+
+                suggestions.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'flash-suggestion-item';
+                    listItem.textContent = item;
+
+                    if (finalOptions.filterable && lowerFilterText && !item.toLowerCase().includes(lowerFilterText)) {
+                        listItem.classList.add('hidden');
+                    } else {
+                        hasVisibleSuggestions = true;
+                    }
+
+                    listItem.onclick = () => {
+                        input.value = item;
+                        input.focus();
+                    };
+                    suggestionList.appendChild(listItem);
+                });
+
+                if (!suggestions || suggestions.length === 0 || !hasVisibleSuggestions) {
+                    suggestionContainer.style.display = 'none';
+                } else {
+                    suggestionContainer.style.display = 'block';
+                }
+            };
+
+            renderSuggestions(input.value);
+
+            if (finalOptions.filterable) {
+                input.addEventListener('input', () => renderSuggestions(input.value));
+            }
+
+            const buttonRow = document.createElement('div');
+            buttonRow.className = 'flash-buttons';
+            alert.appendChild(buttonRow);
+
+            const cancelButton = document.createElement('button');
+            cancelButton.className = 'flash-button flash-cancel-button';
+            cancelButton.textContent = finalOptions.cancelText;
+            buttonRow.appendChild(cancelButton);
+
+            const confirmButton = document.createElement('button');
+            confirmButton.className = 'flash-button flash-confirm-button';
+            confirmButton.textContent = finalOptions.confirmText;
+            buttonRow.appendChild(confirmButton);
+
+            const closeDialog = (value = null) => {
+                alert.classList.remove('show');
+                backdrop.classList.remove('show');
+                backdrop.removeEventListener('click', closeOnBackdropClick);
+                document.removeEventListener('keydown', handleEscapeKey);
+
+                setTimeout(() => {
+                    if (document.body.contains(alert)) document.body.removeChild(alert);
+                    if (document.body.contains(backdrop)) document.body.removeChild(backdrop);
+                    resolve(value);
+                }, 300);
+            };
+
+            confirmButton.onclick = () => closeDialog(input.value);
+            cancelButton.onclick = () => closeDialog(null);
+            const closeOnBackdropClick = () => closeDialog(null);
+            backdrop.addEventListener('click', closeOnBackdropClick);
+
+            const handleEscapeKey = (e) => {
+                if (e.key === 'Escape') {
+                    closeDialog(null);
+                }
+            };
+            document.addEventListener('keydown', handleEscapeKey);
+
+            document.body.appendChild(alert);
+            setTimeout(() => {
+                backdrop.classList.add('show');
+                alert.classList.add('show');
+                input.focus();
+            }, 10);
+        });
+    };
+    // --- KONIEC createInputListBox ---
+
 
     const defineStyle = (name, cssClass) => {
         styles[name] = {
@@ -322,7 +460,13 @@ export const flashAlert = (() => {
                     null,
                     false
                 );
-            }
+            },
+
+            inputList: (message, suggestions, options = {}) => {
+                return createInputListBox(message, suggestions, `${cssClass} flash-prompt`, options);
+            },
+
+
         };
     };
 
@@ -340,7 +484,7 @@ export const flashAlert = (() => {
     defineStyle('materialDesign', 'flash-materialDesign');
 
     return {
-        ...styles, 
+        ...styles,
         loading: loadingManager
     };
 })();
