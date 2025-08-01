@@ -561,7 +561,26 @@ export const flashAlert = (() => {
 
             plot: (data, options = {}) => {
                 return createPlotBox(data, { ...options, styleClass: `${cssClass} flash-plot` });
+            },
+
+            initPlot: () => {
+                return new Promise((resolve, reject) => {
+                    if (window.Chart) {
+                        resolve('Chart.js już załadowany');
+                        return;
+                    }
+
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+                    script.async = true;
+
+                    script.onload = () => resolve('Chart.js załadowany');
+                    script.onerror = () => reject(new Error('Nie udało się załadować Chart.js'));
+
+                    document.head.appendChild(script);
+                });
             }
+
 
         };
     };
