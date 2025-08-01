@@ -562,8 +562,8 @@ export const flashAlert = (() => {
             plot: (data, options = {}) => {
                 return createPlotBox(data, { ...options, styleClass: `${cssClass} flash-plot` });
             },
-
-            initPlot: () => {
+        };
+        initPlot: () => {
                 return new Promise((resolve, reject) => {
                     if (window.Chart) {
                         resolve('Chart.js już załadowany');
@@ -581,8 +581,6 @@ export const flashAlert = (() => {
                 });
             }
 
-
-        };
     };
 
     // Rejestracja wszystkich dostępnych stylów
