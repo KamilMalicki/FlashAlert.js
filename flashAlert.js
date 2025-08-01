@@ -9,6 +9,24 @@
  *
  * Full license: https://github.com/KamilMalicki/FlashAlert.js/blob/main/LICENSE.txt
  */
+function loadExternalScript(url) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = url;
+        script.async = true;
+
+        script.onload = () => resolve(url);
+        script.onerror = () => reject(new Error(`Nie udało się załadować: ${url}`));
+
+        document.head.appendChild(script);
+    });
+}
+
+loadExternalScript('https://cdn.jsdelivr.net/npm/chart.js')
+    .then(() => {})
+    .catch(console.error);
+import Chart from 'https://cdn.jsdelivr.net/npm/chart.js';
+
 export const flashAlert = (() => {
     const styles_flash = {};
 
