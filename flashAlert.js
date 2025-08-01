@@ -506,6 +506,24 @@ export const flashAlert = (() => {
                 input.focus();
             }, 10);
         });
+
+        const initPlot = () => {
+    return new Promise((resolve, reject) => {
+        if (window.Chart) {
+            resolve('Chart.js już załadowany');
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+        script.async = true;
+
+        script.onload = () => resolve('Chart.js załadowany');
+        script.onerror = () => reject(new Error('Nie udało się załadować Chart.js'));
+
+        document.head.appendChild(script);
+    });
+};
     };
     // --- KONIEC createInputListBox ---
 
@@ -563,25 +581,8 @@ export const flashAlert = (() => {
                 return createPlotBox(data, { ...options, styleClass: `${cssClass} flash-plot` });
             },
         };
-        initPlot: () => {
-                return new Promise((resolve, reject) => {
-                    if (window.Chart) {
-                        resolve('Chart.js już załadowany');
-                        return;
-                    }
-
-                    const script = document.createElement('script');
-                    script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-                    script.async = true;
-
-                    script.onload = () => resolve('Chart.js załadowany');
-                    script.onerror = () => reject(new Error('Nie udało się załadować Chart.js'));
-
-                    document.head.appendChild(script);
-                });
-            }
-
     };
+
 
     // Rejestracja wszystkich dostępnych stylów
     defineStyle('light', 'flash-light'); // light
@@ -598,7 +599,8 @@ export const flashAlert = (() => {
 
     return {
         ...styles_flash,
-        loading: loadingManager
+        loading: loadingManager,
+        initPlot
     };
 })();
 
