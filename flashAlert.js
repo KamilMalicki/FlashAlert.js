@@ -14,7 +14,6 @@ export const flashAlert = (() => {
 
     // --- FUNKCJA createPlotBox ---
     const createPlotBox = (data, options = {}) => {
-        console.log("pls import chart.js");
         return new Promise((resolve) => {
             const defaultOptions = {
                 type: 'bar',
@@ -24,6 +23,8 @@ export const flashAlert = (() => {
             };
             const finalOptions = { ...defaultOptions, ...options };
 
+            console.log("pls import chart.js");
+            
             const backdrop = document.createElement('div');
             backdrop.className = 'flash-backdrop show';
 
@@ -48,7 +49,7 @@ export const flashAlert = (() => {
                 }, 300);
             };
             plotBox.appendChild(closeButton);
-
+    
             const blockEnter = (event) => {
                 if (event.key === 'Enter') {
                     event.preventDefault();
