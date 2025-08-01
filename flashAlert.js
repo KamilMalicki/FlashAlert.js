@@ -9,6 +9,9 @@
  *
  * Full license: https://github.com/KamilMalicki/FlashAlert.js/blob/main/LICENSE.txt
  */
+import Chart from 'chart.js/auto';
+console.log("test");
+
 export const flashAlert = (() => {
     const styles_flash = {};
 
@@ -507,23 +510,7 @@ export const flashAlert = (() => {
             }, 10);
         });
 
-        const initPlot = () => {
-    return new Promise((resolve, reject) => {
-        if (window.Chart) {
-            resolve('Chart.js już załadowany');
-            return;
-        }
-
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-        script.async = true;
-
-        script.onload = () => resolve('Chart.js załadowany');
-        script.onerror = () => reject(new Error('Nie udało się załadować Chart.js'));
-
-        document.head.appendChild(script);
-    });
-};
+        
     };
     // --- KONIEC createInputListBox ---
 
