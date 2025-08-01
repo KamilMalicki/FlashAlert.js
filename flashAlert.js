@@ -9,15 +9,12 @@
  *
  * Full license: https://github.com/KamilMalicki/FlashAlert.js/blob/main/LICENSE.txt
  */
-import Chart from 'chart.js/auto';
-console.log("test");
-
 export const flashAlert = (() => {
     const styles_flash = {};
 
     // --- FUNKCJA createPlotBox ---
     const createPlotBox = (data, options = {}) => {
-
+        console.log("pls import chart.js");
         return new Promise((resolve) => {
             const defaultOptions = {
                 type: 'bar',
