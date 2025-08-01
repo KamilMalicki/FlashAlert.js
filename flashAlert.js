@@ -9,9 +9,99 @@
  *
  * Full license: https://github.com/KamilMalicki/FlashAlert.js/blob/main/LICENSE.txt
  */
-
 export const flashAlert = (() => {
-    const styles = {};
+    const styles_flash = {};
+
+    // --- FUNKCJA createPlotBox ---
+    const createPlotBox = (data, options = {}) => {
+
+        return new Promise((resolve) => {
+            const defaultOptions = {
+                type: 'bar',
+                labels: [],
+                title: 'Wykres',
+                styleClass: '',
+            };
+            const finalOptions = { ...defaultOptions, ...options };
+
+            const backdrop = document.createElement('div');
+            backdrop.className = 'flash-backdrop show';
+
+            const plotBox = document.createElement('div');
+            plotBox.className = `flash-alert flash-plot ${finalOptions.styleClass}`;
+
+            const canvas = document.createElement('canvas');
+            canvas.width = 400; // Domyślna szerokość
+            canvas.height = 300; // Domyślna wysokość
+            plotBox.appendChild(canvas);
+
+            const closeButton = document.createElement('button');
+            closeButton.className = 'flash-ok-button flash-close-button';
+            closeButton.innerText = 'Zamknij';
+            closeButton.onclick = () => {
+                plotBox.classList.remove('show');
+                backdrop.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(plotBox);
+                    document.body.removeChild(backdrop);
+                    resolve();
+                }, 300);
+            };
+            plotBox.appendChild(closeButton);
+
+            const blockEnter = (event) => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                }
+            };
+            document.addEventListener('keydown', blockEnter);
+
+            const closeDialog = () => {
+                plotBox.classList.remove('show');
+                backdrop.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(plotBox);
+                    document.body.removeChild(backdrop);
+                    document.removeEventListener('keydown', blockEnter);
+                    resolve();
+                }, 300);
+            };
+
+            closeButton.onclick = closeDialog;
+
+
+            document.body.appendChild(backdrop);
+            document.body.appendChild(plotBox);
+
+            setTimeout(() => {
+                plotBox.classList.add('show');
+                new Chart(canvas.getContext('2d'), {
+                    type: finalOptions.type,
+                    data: {
+                        labels: finalOptions.labels,
+                        datasets: [{
+                            label: finalOptions.title,
+                            data: data,
+                            backgroundColor: finalOptions.backgroundColor || 'rgba(54, 162, 235, 0.5)',
+                            borderColor: finalOptions.borderColor || 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }, 10);
+        });
+    };
+    // --- KONIEC createPlotBox ---
+
 
     // --- FUNKCJA createAlertBox ---
     const createAlertBox = (message, styleClass, callback, icon, noButton = false) => {
@@ -50,6 +140,9 @@ export const flashAlert = (() => {
             };
 
             buttonRow.appendChild(button);
+            const blockEnter = (event) => { if (event.key === 'Enter') { event.preventDefault(); } };
+            document.addEventListener('keydown', blockEnter);
+
             alert.appendChild(buttonRow);
         }
 
@@ -75,7 +168,7 @@ export const flashAlert = (() => {
     };
     // --- KONIEC createAlertBox ---
 
-    // --- FUNKCJA createConfirmBox (TERAZ Z PROMISE) ---
+    // --- FUNKCJA createConfirmBox  ---
     const createConfirmBox = (message, styleClass, resolve, reject, confirmText = 'Tak', cancelText = 'Nie') => {
         const backdrop = document.createElement('div');
         backdrop.className = 'flash-backdrop';
@@ -418,7 +511,7 @@ export const flashAlert = (() => {
 
 
     const defineStyle = (name, cssClass) => {
-        styles[name] = {
+        styles_flash[name] = {
             alert: (msg, cb) => createAlertBox(msg, cssClass, cb),
             alertNoButton: (msg) => createAlertBox(msg, cssClass, null, null, true),
             alertSuccess: (msg, cb) => createAlertBox(msg, `${cssClass} flash-success`, cb, '✔️'),
@@ -466,25 +559,28 @@ export const flashAlert = (() => {
                 return createInputListBox(message, suggestions, `${cssClass} flash-prompt`, options);
             },
 
+            plot: (data, options = {}) => {
+                return createPlotBox(data, { ...options, styleClass: `${cssClass} flash-plot` });
+            }
 
         };
     };
 
     // Rejestracja wszystkich dostępnych stylów
-    defineStyle('light', 'flash-light');
-    defineStyle('dark', 'flash-dark');
-    defineStyle('terminal', 'flash-terminal');
-    defineStyle('retro', 'flash-retro');
-    defineStyle('neon', 'flash-neon');
-    defineStyle('plasma', 'flash-plasma');
-    defineStyle('geo', 'flash-geo');
-    defineStyle('aqua', 'flash-aqua');
-    defineStyle('cyber', 'flash-cyber');
-    defineStyle('deepin', 'flash-deepin');
-    defineStyle('materialDesign', 'flash-materialDesign');
+    defineStyle('light', 'flash-light'); // light
+    defineStyle('dark', 'flash-dark'); // dark
+    defineStyle('terminal', 'flash-terminal'); // terminal
+    defineStyle('retro', 'flash-retro'); // retro
+    defineStyle('neon', 'flash-neon'); // neon
+    defineStyle('plasma', 'flash-plasma'); // plasma
+    defineStyle('geo', 'flash-geo'); // geo 
+    defineStyle('aqua', 'flash-aqua'); // aqua
+    defineStyle('cyber', 'flash-cyber'); // cyber
+    defineStyle('deepin', 'flash-deepin'); // deepin
+    defineStyle('materialDesign', 'flash-materialDesign'); // materialDesign
 
     return {
-        ...styles,
+        ...styles_flash,
         loading: loadingManager
     };
 })();
