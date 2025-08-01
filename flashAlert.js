@@ -10,26 +10,6 @@
  * Full license: https://github.com/KamilMalicki/FlashAlert.js/blob/main/LICENSE.txt
  */
 export const flashAlert = (() => {
-
-    function initPlot() {
-    return new Promise((resolve, reject) => {
-        if (window.Chart) {
-            resolve('Chart.js już załadowany');
-            return;
-        }
-
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-        script.async = true;
-
-        script.onload = () => resolve('Chart.js załadowany');
-        script.onerror = () => reject(new Error('Nie udało się załadować Chart.js'));
-
-        document.head.appendChild(script);
-    });
-}
-
-    
     const styles_flash = {};
 
     // --- FUNKCJA createPlotBox ---
