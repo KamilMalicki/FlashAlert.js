@@ -585,8 +585,8 @@ export const flashAlert = (() => {
     return {
         ...styles_flash,
         loading: loadingManager,
-        initPlot
     };
 })();
 
 export default flashAlert;
+
